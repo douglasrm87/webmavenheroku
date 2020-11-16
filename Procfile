@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Dserver.port=$PORT -Djavax.net.ssl.trustStore=heroku-truststore.jks -Djavax.net.ssl.trustStorePassword=changeit   target/projetojavawebmaven-0.0.1-SNAPSHOT.war

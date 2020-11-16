@@ -1,0 +1,48 @@
+Sucesso com CLI - WAR
+
+SET NODE_EXTRA_CA_CERTS=D:\devstudio12\ConteudoHeroku\cliwarjavamaven\siteheroku.cer
+keytool -import -alias heroku -keystore cacerts -file D:\devstudio12\ConteudoHeroku\cliwarjavamaven\siteheroku.cer
+git config --global http.sslBackend "openssl"
+git config --global http.sslCAInfo D:\devstudio12\ConteudoHeroku\cliwarjavamaven\siteheroku.cer
+
+git clone https://git.heroku.com/webmavenheroku.git
+D:\devstudio12\workspace>heroku auth:token
+ �   Warning: token will expire 04/07/2021
+ �   Use heroku authorizations:create to generate a long-term token
+d4fe8bec-19c4-4dda-b9f0-99985875e09f
+
+
+mvn clean install
+mvn package
+heroku login
+git init
+git config --global http.sslVerify false
+heroku git:remote -a webmavenheroku
+git add .
+git commit -am "versao 1.0"
+git push heroku master
+			Para o deploy
+heroku plugins:install java
+heroku war:deploy target/webmavenheroku-0.0.1-SNAPSHOT.war --remote origin
+
+
+Para recolocar o Web service no ar.
+heroku login
+precisa commit e push antes
+heroku git:remote -a webmavenheroku
+
+
+heroku ps:restart web --remote origin
+heroku buildpacks:clear  --remote origin
+
+heroku buildpacks:clear  --remote origin
+
+D:\devstudio12\ConteudoHeroku\cliwarjavamaven> heroku logs --app cliwarjavamaven > log.txt
+D:\devstudio12\ConteudoHeroku\cliwarjavamaven>heroku restart --app cliwarjavamaven
+heroku ps:scale web=0 --app cliwarjavamaven
+
+para acertar git
+git pull origin master--allow-unrelated-histories
+git remote add origin https://git.heroku.com/webmavenheroku.git
+
+ 
