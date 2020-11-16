@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h1>Comandos Data Control Language - SQL - Postgree</h1>
+
+	<h:form>
+
+		<p:commandButton value="Criar Tabelas do Projeto" id="criarTabela"
+			style="margin-right:20px;"
+			action="#{gestaoPostGree.criarTabelaspostGree()}"
+			styleClass="ui-priority-primary" />
+
+		<p:commandButton value="Remover Tabela Projeto" id="removerTabela"
+			action="#{gestaoPostGree.removerTabelaspostGree()}"
+			style="margin-right:20px;" styleClass="ui-priority-primary" />
+
+		<p:commandButton value="Criar Tabela LOG Faculdade"
+			id="criarTabelaLog"
+			action="#{gestaoPostGree.criarTabelasFaculdadeViaWEB()}"
+			style="margin-right:20px;" styleClass="ui-priority-primary" />
+
+		<p:commandButton value="Remover Tabela LOG Faculdade"
+			id="removerTabelaLog"
+			action="#{gestaoPostGree.removerTabelasFaculdadeViaWEB()}"
+			style="margin-right:20px;" styleClass="ui-priority-primary" />
+
+
+		<!--
+		
+	
+		  
+		<p:editor value="This is PrimeFace editor" />
+-->
+		<!-- 
+		<p:growl id="growl" life="2000" />
+ 
+		<p:commandButton value="Ajax Submit" id="ajax" update="growl"
+			action="#{buttonView.buttonAction}" style="margin-right:20px;"
+			styleClass="ui-priority-primary" />
+
+		<p:commandButton value="Non-Ajax Submit" id="nonAjax"
+			action="#{buttonView.buttonAction}" style="margin-right:20px;"
+			ajax="false" />
+
+		<p:commandButton value="With Icon" id="withIcon"
+			action="#{buttonView.buttonAction}" update="growl"
+			style="margin-right:20px;" icon="pi pi-save" />
+
+		<p:commandButton action="#{buttonView.buttonAction}" id="iconOnly"
+			update="growl" style="margin-right:20px;" icon="pi pi-save"
+			title="Icon Only" />
+
+		<p:commandButton value="Disabled" id="disabled"
+			style="margin-right:20px;" disabled="true" />
+-->
+	</h:form>
+
+</h:body>
+</html>

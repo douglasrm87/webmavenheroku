@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h1>Uso do COOrdBOT</h1>
+
+	<h:form id="Formlog">
+		<!-- https://stackoverflow.com/questions/24560725/primefaces-commandbutton-not-updating-datatable-is-update-attribute-required
+		 -->
+		<h:outputText id="txt_count" value="Atualizações da tela: #{gestaoPostGree.number}" />
+		<p:poll interval="240" listener="#{gestaoPostGree.increment}"
+			update="txt_count" />
+		<br></br>
+		<br></br>
+		<p:commandButton value="Consultar todas as LOGs" id="listarLogs"
+			style="margin-right:20px;" update="Formlog:tablog" ajax="true"
+			action="#{gestaoPostGree.selecionarLOGs()}"
+			styleClass="ui-priority-primary" />
+
+		<br></br>
+		<br></br>
+		<p:dataTable var="log" value="#{gestaoPostGree.listaLOG}" rows="10"
+			paginator="true" id="tablog"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+			rowsPerPageTemplate="5,10,15">
+			<p:column headerText="Usuário" sortBy="#{log.nomeUsuario}">
+				<h:outputText value="#{log.nomeUsuario}" />
+			</p:column>
+
+			<p:column headerText="ID_PAI" sortBy="#{log.idPai}">
+				<h:outputText value="#{log.idPai}" />
+			</p:column>
+
+			<p:column headerText="ID_ITEM" sortBy="#{log.idItem}">
+				<h:outputText value="#{log.idItem}" />
+			</p:column>
+
+			<p:column headerText="Descrição" sortBy="#{log.descItem}">
+				<h:outputText value="#{log.descItem}" />
+			</p:column>
+
+			<p:column headerText="Data Inclusão" sortBy="#{log.dataInclusao}">
+				<h:outputText value="#{log.dataInclusao}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+</h:body>
+</html>
